@@ -13,7 +13,7 @@ library(tmap)
 # Cargammos los SHp del Peru ---------------------------------------------------------------
 Peru        <- getData('GADM', country='Peru', level=3) %>% st_as_sf()
 MD          = st_read("SHP/MDD_dis.shp")
-MDD         <- st_transform(MDD,crs = st_crs("+proj=longlat +datum=WGS84 +no_defs"))
+MDD         <- st_transform(MD,crs = st_crs("+proj=longlat +datum=WGS84 +no_defs"))
 MDD_xy      <- cbind(MDD  , st_coordinates(st_centroid(MDD$geometry)))
 
 elev        = get_elev_raster(MDD, z=10)
